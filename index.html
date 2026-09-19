@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoppe MedTech Advisory | Regulatory Strategy for Startups</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#152033',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Language Toggle Logic */
+        body[data-lang="en"] .lang-sv { display: none !important; }
+        body[data-lang="sv"] .lang-en { display: none !important; }
+    </style>
+</head>
+<body data-lang="en" class="bg-white text-slate-900 font-sans antialiased selection:bg-slate-900 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <span class="font-bold text-xl tracking-tight text-slate-900">HOPPE<span class="text-slate-400 font-normal ml-1">ADVISORY</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#philosophy" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
+                        <span class="lang-en">Philosophy</span><span class="lang-sv">Filosofi</span>
+                    </a>
+                    <a href="#expertise" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
+                        <span class="lang-en">Advisory Areas</span><span class="lang-sv">Rådgivningsområden</span>
+                    </a>
+                    <a href="#process" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
+                        <span class="lang-en">The Roadmap</span><span class="lang-sv">Färdplanen</span>
+                    </a>
+                    <a href="#contact" class="text-sm font-medium bg-slate-900 text-white px-5 py-2.5 rounded hover:bg-slate-800 transition-colors shadow-sm">
+                        <span class="lang-en">Schedule Consultation</span><span class="lang-sv">Boka Möte</span>
+                    </a>
+                    <!-- Desktop Lang Toggle -->
+                    <button onclick="toggleLanguage()" class="flex items-center space-x-1 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors pl-4 border-l border-slate-200">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        <span id="desktop-lang-text">SV</span>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center space-x-4">
+                    <!-- Mobile Lang Toggle -->
+                    <button onclick="toggleLanguage()" class="flex items-center space-x-1 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        <span id="mobile-lang-text">SV</span>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 focus:outline-none p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-1 shadow-lg">
+                <a href="#philosophy" class="block px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-md">
+                    <span class="lang-en">Philosophy</span><span class="lang-sv">Filosofi</span>
+                </a>
+                <a href="#expertise" class="block px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-md">
+                    <span class="lang-en">Advisory Areas</span><span class="lang-sv">Rådgivningsområden</span>
+                </a>
+                <a href="#process" class="block px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-md">
+                    <span class="lang-en">The Roadmap</span><span class="lang-sv">Färdplanen</span>
+                </a>
+                <a href="#contact" class="block px-3 py-3 mt-4 text-base font-medium text-center bg-slate-900 text-white rounded-md">
+                    <span class="lang-en">Schedule Consultation</span><span class="lang-sv">Boka Konsultation</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 md:pt-48 md:pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-start min-h-[85vh] justify-center">
+        <div class="max-w-4xl fade-in-up">
+            <div class="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-wider text-slate-500 uppercase bg-slate-100 rounded-full">
+                <span class="lang-en">Startup Regulatory Strategy</span>
+                <span class="lang-sv">Regulatorisk Strategi för Startups</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 leading-[1.1] mb-6">
+                <span class="lang-en">Architecting Market Access for <span class="text-slate-500">MedTech Startups.</span></span>
+                <span class="lang-sv">Bygger Marknadstillträde för <span class="text-slate-500">MedTech-Startups.</span></span>
+            </h1>
+            <p class="mt-4 text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed font-light mb-10">
+                <span class="lang-en">A flawless product means nothing with a flawed regulatory strategy. We help founders define their intended use, qualify their device, and build a predictable roadmap to <comment-tag id="1">clearance in the EU, US, and globally.</comment-tag id="1" text="In RA terms, the US FDA does 'clearance' (510k), while the EU does 'CE marking'. Distinguishing these shows strong regulatory literacy right from the hero section.
+
+Suggestion: 'CE marking in the EU, 510(k) clearance in the US, and global market access.'" type="suggestion"></span>
+                <span class="lang-sv">En felfri produkt betyder ingenting med en bristfällig regulatorisk strategi. Vi hjälper grundare att definiera sitt avsedda ändamål, kvalificera sin produkt och bygga en förutsägbar väg till <comment-tag id="2">godkännande i EU, USA och globalt.</comment-tag id="2" text="Matching the English suggestion for precise terminology.
+
+Suggestion: 'CE-märkning i EU, 510(k)-godkännande i USA och globalt marknadstillträde.'" type="suggestion"></span>
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 sm:items-center">
+                <a href="#contact" class="inline-flex justify-center items-center px-8 py-4 text-base font-medium text-white bg-slate-900 border border-transparent rounded hover:bg-slate-800 transition-colors shadow-md">
+                    <span class="lang-en">Book a Strategy Session</span>
+                    <span class="lang-sv">Boka ett Strategimöte</span>
+                </a>
+                <a href="#philosophy" class="inline-flex justify-center items-center px-8 py-4 text-base font-medium text-slate-700 bg-transparent hover:text-slate-900 transition-colors group">
+                    <span class="lang-en">Explore our Approach</span>
+                    <span class="lang-sv">Utforska vår Metod</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="py-24 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6">
+                    <span class="lang-en">Everything begins with the Intended Purpose.</span>
+                    <span class="lang-sv">Allt börjar med det Avsedda Ändamålet.</span>
+                </h2>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    <span class="lang-en">Startups often rush into product development before fully answering the most critical regulatory question: <em>Is this legally a medical device, or a general health and wellness product?</em> Navigating the borderline between a lifestyle app and a regulated device is critical. Getting this wrong early leads to devastating delays and massive clinical data burdens later.</span>
+                    <span class="lang-sv">Startups skyndar ofta in i produktutveckling innan de fullt ut besvarat den mest kritiska regulatoriska frågan: <em>Är detta juridiskt sett en medicinteknisk produkt, eller en allmän hälso- och friskvårdsprodukt?</em> Att navigera gränslandet mellan en livsstilsapp och en reglerad produkt är avgörande. Att göra fel tidigt leder till förödande förseningar och enorma krav på kliniska data senare.</span>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Pillar 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-slate-100 rounded flex items-center justify-center mb-6">
+                        <i data-lucide="crosshair" class="w-6 h-6 text-slate-700"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-3">
+                        <span class="lang-en">Defining the Boundaries</span>
+                        <span class="lang-sv">Definiera Gränserna</span>
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        <span class="lang-en">We help you meticulously draft your Intended Use statement. A few carefully chosen words can be the difference between an unregulated wellness tool, a smooth 510(k) clearance using a strong predicate, or years of unnecessary regulatory hurdles.</span>
+                        <span class="lang-sv">Vi hjälper dig att noggrant utforma ditt avsedda ändamål (Intended Purpose). Några väl valda ord kan vara skillnaden mellan ett oreglerat friskvårdsverktyg, ett smidigt 510(k)-godkännande via en stark "predicate device", eller år av onödiga regulatoriska hinder.</span>
+                    </p>
+                </div>
+                
+                <!-- Pillar 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-slate-100 rounded flex items-center justify-center mb-6">
+                        <i data-lucide="globe" class="w-6 h-6 text-slate-700"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-3">
+                        <span class="lang-en">Global Roadmapping</span>
+                        <span class="lang-sv">Global Färdplan</span>
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        <span class="lang-en">We build a step-by-step regulatory plan tailored to your runway. While our core focus is EU MDR/IVDR and US FDA, we architect pathways for compliance in any international market.</span>
+                        <span class="lang-sv">Vi bygger en steg-för-steg regulatorisk plan anpassad till er "runway". Medan vårt kärnfokus är EU MDR/IVDR och amerikanska FDA, bygger vi vägar för godkännande på alla internationella marknader.</span>
+                    </p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-slate-100 rounded flex items-center justify-center mb-6">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-slate-700"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-3">
+                        <span class="lang-en">De-risking the Product</span>
+                        <span class="lang-sv">Riskminimera Produkten</span>
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        <span class="lang-en">By aligning your strategy and engineering teams early, we ensure your product requirements perfectly match the expectations of the FDA and Notified Bodies, avoiding costly redesigns.</span>
+                        <span class="lang-sv">Genom att tidigt synkronisera er strategi med utvecklingsteamet säkerställer vi att produktkraven perfekt matchar förväntningarna från FDA och anmälda organ, vilket undviker dyra omkonstruktioner.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Advisory Areas Section -->
+    <section id="expertise" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">
+                    <span class="lang-en">Advisory Areas for Startups</span>
+                    <span class="lang-sv">Rådgivningsområden för Startups</span>
+                </h2>
+                <div class="w-20 h-1 bg-slate-900 rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Area 1 -->
+                <div class="group p-8 border border-slate-200 rounded-lg hover:border-slate-400 hover:shadow-lg transition-all duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-semibold text-slate-900">
+                            <span class="lang-en">01. Qualification & Classification</span>
+                            <span class="lang-sv">01. Kvalificering & Klassificering</span>
+                        </h3>
+                        <i data-lucide="help-circle" class="w-6 h-6 text-slate-400 group-hover:text-slate-900 transition-colors"></i>
+                    </div>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        <span class="lang-en">Navigating the borderline. We provide definitive assessments to determine if your technology is a regulated medical device or a general health product. Once qualified, we strategically determine its classification <comment-tag id="3">under MDR, IVDR, FDA, or other global rules.</comment-tag id="3" text="The term 'rules' sounds slightly informal in an RA context. Using 'regulations' or 'frameworks' elevates the professional tone.
+
+Suggestion: 'under MDR, IVDR, FDA regulations, or other global frameworks.'" type="suggestion"></span>
+                        <span class="lang-sv">Navigera i gränslandet. Vi gör definitiva bedömningar för att avgöra om din teknik är en reglerad medicinteknisk produkt eller en allmän hälsoprodukt. När den väl är kvalificerad bestämmer vi strategiskt dess klassificering <comment-tag id="4">enligt MDR, IVDR, FDA eller andra globala regler.</comment-tag id="4" text="Matching the English edit for professional tone.
+
+Suggestion: 'enligt MDR, IVDR, FDA-regelverk eller andra globala ramverk.'" type="suggestion"></span>
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-slate-800"></i> <span class="lang-en">Health & Wellness vs. Medical Device</span><span class="lang-sv">Hälsa & Friskvård vs. Medicinteknik</span></li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-slate-800"></i> <span class="lang-en">Global Classification Strategy</span><span class="lang-sv">Global Klassificeringsstrategi</span></li>
+                    </ul>
+                </div>
+
+                <!-- Area 2 -->
+                <div class="group p-8 border border-slate-200 rounded-lg hover:border-slate-400 hover:shadow-lg transition-all duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-semibold text-slate-900">
+                            <span class="lang-en">02. Global Market Access</span>
+                            <span class="lang-sv">02. Globalt Marknadstillträde</span>
+                        </h3>
+                        <i data-lucide="compass" class="w-6 h-6 text-slate-400 group-hover:text-slate-900 transition-colors"></i>
+                    </div>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        <span class="lang-en">Translating your business goals into a concrete timeline. We help you find the right Predicate Device and navigate the FDA 510(k) process, alongside robust EU CE Mark strategies.</span>
+                        <span class="lang-sv">Att översätta dina affärsmål till en konkret tidslinje. Vi hjälper er att hitta rätt "Predicate Device" och navigera FDA 510(k)-processen, jämsides med robusta strategier för EU CE-märkning.</span>
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-slate-800"></i> <span class="lang-en">FDA 510(k) Strategy & Submissions</span><span class="lang-sv">FDA 510(k) Strategi & Inlämning</span></li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-slate-800"></i> <span class="lang-en">EU CE Mark Pathways</span><span class="lang-sv">EU CE-märkning</span></li>
+                    </ul>
+                </div>
+
+                <!-- Area 3 -->
+                <div class="group p-8 border border-slate-200 rounded-lg hover:border-slate-400 hover:shadow-lg transition-all duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-semibold text-slate-900">
+                            <span class="lang-en">03. SaMD, AI & Cybersecurity</span>
+                            <span class="lang-sv">03. SaMD, AI & Cybersäkerhet</span>
+                        </h3>
+                        <i data-lucide="cpu" class="w-6 h-6 text-slate-400 group-hover:text-slate-900 transition-colors"></i>
+                    </div>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        <span class="lang-en">Specialized strategy for Software as a Medical Device (SaMD) and AI-driven diagnostics. We ensure your architecture meets strict FDA/MDR cybersecurity requirements and software safety classes from day one.</span>
+                        <span class="lang-sv">Specialiserad strategi för mjukvara som medicinteknik (SaMD) och AI-driven diagnostik. Vi säkerställer att er arkitektur uppfyller strikta krav på cybersäkerhet från FDA/MDR och rätt mjukvaruklassning från start.</span>
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-slate-800"></i> <span class="lang-en">IEC 62304 Software Architecture</span><span class="lang-sv">IEC 62304 Mjukvaruarkitektur</span></li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-slate-800"></i> <span class="lang-en">FDA Cybersecurity Frameworks</span><span class="lang-sv">Ramverk för FDA Cybersäkerhet</span></li>
+                    </ul>
+                </div>
+
+                <!-- Area 4 -->
+                <div class="group p-8 border border-slate-200 rounded-lg hover:border-slate-400 hover:shadow-lg transition-all duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-2xl font-semibold text-slate-900">
+                            <span class="lang-en">04. Technical File & QMS Build</span>
+                            <span class="lang-sv">04. Teknisk Fil & QMS-uppbyggnad</span>
+                        </h3>
+                        <i data-lucide="layers" class="w-6 h-6 text-slate-400 group-hover:text-slate-900 transition-colors"></i>
+                    </div>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        <span class="lang-en">Once the strategy is locked, we guide your engineering team in building right-sized ISO 13485 Quality Management Systems and generating assessor-friendly Technical Documentation.</span>
+                        <span class="lang-sv">När strategin är spikad vägleder vi ditt utvecklingsteam i att bygga rätt dimensionerade ISO 13485 kvalitetsledningssystem (QMS) och skapa granskarvänlig teknisk dokumentation.</span>
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-slate-800"></i> <span class="lang-en">Lean ISO 13485 for Agile Teams</span><span class="lang-sv">Lean ISO 13485 för Agila Team</span></li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-slate-800"></i> <span class="lang-en">Risk & Usability Integration</span><span class="lang-sv">Integrering av Risk & Användbarhet</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-24 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                    <span class="lang-en">The Startup Regulatory Roadmap</span>
+                    <span class="lang-sv">Den Regulatoriska Färdplanen</span>
+                </h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    <span class="lang-en">How we turn early-stage innovation into a cleared, marketable device.</span>
+                    <span class="lang-sv">Hur vi förvandlar innovation i tidiga skeden till en godkänd, säljbar produkt.</span>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-[1px] bg-slate-700 z-0"></div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 text-center group">
+                    <div class="w-24 h-24 mx-auto bg-slate-800 border-4 border-slate-900 rounded-full flex items-center justify-center mb-6 shadow-xl transition-transform group-hover:scale-105">
+                        <span class="text-3xl font-bold text-white">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">
+                        <span class="lang-en">Define & Qualify</span>
+                        <span class="lang-sv">Definiera & Kvalificera</span>
+                    </h3>
+                    <p class="text-slate-400">
+                        <span class="lang-en">We analyze your technology, resolve the wellness vs. medical device borderline, and draft a robust Intended Purpose.</span>
+                        <span class="lang-sv">Vi analyserar din teknik, löser gränsdragningen mellan friskvård och medicinteknik, och formulerar ett robust avsett ändamål.</span>
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10 text-center group">
+                    <div class="w-24 h-24 mx-auto bg-slate-800 border-4 border-slate-900 rounded-full flex items-center justify-center mb-6 shadow-xl transition-transform group-hover:scale-105">
+                        <span class="text-3xl font-bold text-white">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">
+                        <span class="lang-en">Strategize & Plan</span>
+                        <span class="lang-sv">Strategi & Planering</span>
+                    </h3>
+                    <p class="text-slate-400">
+                        <span class="lang-en">We build a comprehensive market access strategy, identifying ideal Predicate Devices and <comment-tag id="5">detailing the required testing</comment-tag id="5" text="Using exact engineering terminology here bridges the gap between RA and the startup's R&D team. 
+
+Suggestion: 'detailing the required verification, validation (V&V),'" type="suggestion"> for the US, EU, or your target global market.</span>
+                        <span class="lang-sv">Vi bygger en omfattande strategi för marknadstillträde, identifierar optimala "Predicate Devices" och <comment-tag id="6">detaljerar de tester</comment-tag id="6" text="Matching the English suggestion. 
+
+Suggestion: 'detaljerar den verifiering, validering (V&V)'" type="suggestion"> som krävs för USA, EU eller er globala målmarknad.</span>
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 text-center group">
+                    <div class="w-24 h-24 mx-auto bg-slate-800 border-4 border-slate-900 rounded-full flex items-center justify-center mb-6 shadow-xl transition-transform group-hover:scale-105">
+                        <span class="text-3xl font-bold text-white">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">
+                        <span class="lang-en">Execute & Submit</span>
+                        <span class="lang-sv">Genomförande & Inlämning</span>
+                    </h3>
+                    <p class="text-slate-400">
+                        <span class="lang-en">We support your team in generating the compliant Technical File, implementing the QMS, and <comment-tag id="7">actively defending the submission.</comment-tag id="7" text="A major part of an RA consultant's value is talking to the authorities. Adding this detail increases perceived value.
+
+Suggestion: 'actively managing agency interactions and defending the submission.'" type="suggestion"></span>
+                        <span class="lang-sv">Vi stödjer ditt team med att ta fram den tekniska filen, implementera QMS och <comment-tag id="8">aktivt försvara inlämningen.</comment-tag id="8" text="Matching the English suggestion. 
+
+Suggestion: 'aktivt hantera myndighetsdialogen och försvara inlämningen.'" type="suggestion"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / CTA Section -->
+    <section id="contact" class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6">
+                <span class="lang-en">Build your strategy before you build the device.</span>
+                <span class="lang-sv">Bygg din strategi innan du bygger produkten.</span>
+            </h2>
+            <p class="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
+                <span class="lang-en">Whether you are a pre-seed founding team navigating market access for a medical device, or preparing for an FDA 510(k) submission, let's establish a clear, predictable path to market.</span>
+                <span class="lang-sv">Oavsett om ni är ett tidigt grundarteam som söker marknadstillträde för en medicinteknisk produkt, eller om ni förbereder en FDA 510(k)-inlämning, låt oss etablera en tydlig och förutsägbar väg till marknaden.</span>
+            </p>
+            
+            <div class="max-w-md mx-auto">
+                <a href="mailto:strategy@hoppemedtech.com?subject=Strategy%20Session%20Request" class="w-full bg-slate-900 text-white font-medium py-4 px-8 rounded-lg hover:bg-slate-800 transition-colors flex justify-center items-center text-lg shadow-md group">
+                    <i data-lucide="mail" class="w-5 h-5 mr-3 opacity-70 group-hover:opacity-100 transition-opacity"></i>
+                    <span class="lang-en">Email Us to Request a Session</span>
+                    <span class="lang-sv">Mejla oss för att boka ett möte</span>
+                </a>
+                <p class="mt-4 text-sm text-slate-500">
+                    <span class="lang-en">Clicking this button will open your default email app.</span>
+                    <span class="lang-sv">Ett klick på knappen öppnar ditt e-postprogram.</span>
+                </p>
+            </div>
+            
+            <div class="mt-12 text-slate-500 text-sm flex flex-col md:flex-row justify-center items-center gap-4">
+                <span class="flex items-center"><i data-lucide="mail" class="w-4 h-4 mr-2"></i> strategy@hoppemedtech.com</span>
+                <span class="hidden md:inline text-slate-300">•</span>
+                <span class="flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-2"></i> 
+                    <span class="lang-en">Sweden / Global Advisory</span>
+                    <span class="lang-sv">Sverige / Global Rådgivning</span>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0 text-center md:text-left">
+                <span class="font-bold text-lg tracking-tight text-white">HOPPE<span class="text-slate-500 font-normal ml-1">ADVISORY</span></span>
+                <p class="text-sm mt-1">
+                    <span class="lang-en">Strategic Market Access for MedTech Innovators.</span>
+                    <span class="lang-sv">Strategiskt Marknadstillträde för MedTech-innovatörer.</span>
+                </p>
+            </div>
+            <div class="text-sm text-center md:text-right mt-4 md:mt-0">
+                &copy; <span id="year"></span> Hoppe MedTech Advisory AB. <span class="lang-en">All rights reserved.</span><span class="lang-sv">Med ensamrätt.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Icons and Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = menu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // --- LANGUAGE TOGGLE LOGIC ---
+        
+        // Check local storage for saved language, default to English
+        const savedLang = localStorage.getItem('hoppe_lang') || 'en';
+        setLanguage(savedLang);
+
+        function toggleLanguage() {
+            const currentLang = document.body.dataset.lang;
+            const newLang = currentLang === 'en' ? 'sv' : 'en';
+            setLanguage(newLang);
+        }
+
+        function setLanguage(lang) {
+            // Update body attribute to switch visible spans via CSS
+            document.body.dataset.lang = lang;
+            
+            // Save preference
+            localStorage.setItem('hoppe_lang', lang);
+            
+            // Update the button text (shows the *other* language available)
+            const desktopBtnText = document.getElementById('desktop-lang-text');
+            const mobileBtnText = document.getElementById('mobile-lang-text');
+            
+            if (desktopBtnText && mobileBtnText) {
+                const textToShow = lang === 'en' ? 'SV' : 'EN';
+                desktopBtnText.textContent = textToShow;
+                mobileBtnText.textContent = textToShow;
+            }
+
+            // Update form placeholders
+            const inputs = document.querySelectorAll('input[data-en-placeholder], textarea[data-en-placeholder]');
+            inputs.forEach(input => {
+                input.placeholder = input.getAttribute(`data-${lang}-placeholder`);
+            });
+        }
+    </script>
+</body>
+</html>
